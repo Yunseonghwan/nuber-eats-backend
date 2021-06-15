@@ -31,13 +31,13 @@ export class UserResolver {
   }
 
   @Query(returns => User)
-  @Role(['Any'])
+  // @Role(['Any'])
   me(@AuthUser() authUser: User) {
     return authUser;
   }
 
   @Query(returns => UserProfileOutput)
-  @Role(['Any'])
+  // @Role(['Any'])
   async userProfile(
     @Args() userProfileInput: UserProfileInput,
   ): Promise<UserProfileOutput> {
@@ -45,7 +45,7 @@ export class UserResolver {
   }
 
   @Mutation(returns => EditProfileOutput)
-  @Role(['Any'])
+  // @Role(['Any'])
   async editProfile(
     @AuthUser() authUser: User,
     @Args('input') editProfileInput: EditProfileInput,
