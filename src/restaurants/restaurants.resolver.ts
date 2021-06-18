@@ -1,4 +1,3 @@
-import { SetMetadata } from '@nestjs/common';
 import {
   Args,
   Int,
@@ -8,10 +7,9 @@ import {
   ResolveField,
   Resolver,
 } from '@nestjs/graphql';
-import { resolveFieldValueOrError } from 'graphql/execution/execute';
 import { AuthUser } from 'src/auth/auth-user.decorator';
 import { Role } from 'src/auth/role.decorator';
-import { User, UserRole } from 'src/users/entities/user.entity';
+import { User } from 'src/users/entities/user.entity';
 import { AllCategoriesOutput } from './dtos/all-categories.dto';
 import { CategoryInput, CategoryOutput } from './dtos/category.dto';
 import { CreateDishInput, CreateDishOutput } from './dtos/create-dish.dto';
