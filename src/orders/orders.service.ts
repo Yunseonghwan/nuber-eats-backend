@@ -157,7 +157,7 @@ export class OrderService {
   ): Promise<GetOrderOutput> {
     try {
       const order = await this.orders.findOne(orderId, {
-        relations: ['restaurnat'],
+        relations: ['restaurant'],
       });
       if (!order) {
         return {
