@@ -17,7 +17,7 @@ export class OrderResolver {
   constructor(private readonly ordersService: OrderService) {}
 
   @Mutation(returns => CreateOrderOutput)
-  //   @Role(['Client'])
+  @Role(['Client'])
   async createOrder(
     @AuthUser() customer: User,
     @Args('input')
@@ -27,7 +27,7 @@ export class OrderResolver {
   }
 
   @Query(returns => GetOrdersOutput)
-  // @Role(['Any'])
+  @Role(['Any'])
   async getOrders(
     @AuthUser() user: User,
     @Args('input') getOrdersInput: GetOrdersInput,
@@ -36,7 +36,7 @@ export class OrderResolver {
   }
 
   @Query(returns => GetOrderOutput)
-  // @Role(['Any'])
+  @Role(['Any'])
   async getOrder(
     @AuthUser() user: User,
     @Args('input') getOrderInput: GetOrderInput,
@@ -45,7 +45,7 @@ export class OrderResolver {
   }
 
   @Mutation(returns => EditOrderOutput)
-  // @Role(['Any'])
+  @Role(['Any'])
   async editOrder(
     @AuthUser() user: User,
     @Args('input') editOrderInput: EditOrderInput,
@@ -62,7 +62,9 @@ export class OrderResolver {
   }
 
   @Subscription(returns => String)
-  readyPotato() {
+  // @Role(['Any'])
+  readyPotato(@AuthUser() user: User) {
+    console.log(user);
     return pubsub.asyncIterator('hotPotatos');
   }
 }
